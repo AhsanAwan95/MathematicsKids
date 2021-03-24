@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/dialogue_background"
+        android:id="@+id/ll_eu_consent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!--Title / Header-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/app_name" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtConsentMoreDescription1"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="6dp"
+            android:textSize="14sp" />
+
+        <GridView
+            android:id="@+id/gridNetworkProviders"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:numColumns="2">
+
+        </GridView>
+
+        <TextView
+            android:id="@+id/txtConsentMoreLearnMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
+            android:textColor="#0000EE"
+            android:textColorLink="#0000EE"
+            android:textSize="14sp" />
+
+        <Button
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_rounded"
+            android:layout_gravity="center"
+            android:id="@+id/btnConsentMoreBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
+            android:text="Back"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+</ScrollView>

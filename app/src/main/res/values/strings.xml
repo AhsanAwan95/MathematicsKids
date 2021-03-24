@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">kidstable</string>
+
+    <string name="table_quiz">Table Quiz</string>
+    <string name="learn">Learn</string>
+    <string name="learn_table">Learn Table</string>
+    <string name="play">Play</string>
+    <string name="number">Number</string>
+    <string name="your_result">Your result</string>
+    <string name="excellent">Excellent !!</string>
+    <string name="dual_quiz">Dual Quiz</string>
+    <string name="pass">Pass</string>
+    <string name="fail">Fail</string>
+    <string name="pythagoran_table">Pythagorean Table</string>
+
+    <string name="settings">Settings</string>
+    <string name="level_type">Level Type</string>
+    <string name="start">Start</string>
+    <string name="s">s</string>
+    <string name="learn_quiz">Learn Quiz</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="clear_level">Clear previous level…</string>
+    <string name="level">Level\u0020</string>
+    <string name="language">Language</string>
+    <string name="privacy_policy">Privacy Policy</string>
+
+    <string name="privacy_policy_link">http://google.com/</string>
+
+    <string name="feedback">Feedback</string>
+    <string name="rate_us">Rate us</string>
+    <string name="your_time">Your Time</string>
+    <string name="score">Score :</string>
+    <string name="setting">Setting</string>
+    <string name="share">Share</string>
+    <string name="str_easy">Easy</string>
+    <string name="str_hard">Hard</string>
+    <string name="str_medium">Medium</string>
+    <string name="sound">Sound</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="white_space" translatable="false">\u0020\u0020\u0020</string>
+    <string name="white_double_space" translatable="false">\u0020\u0020</string>
+
+
+    <string name="str_dot" translatable="false">:</string>
+    <string name="str_sign" translatable="false">/</string>
+    <string name="str_multi_sign" translatable="false">*</string>
+    <string name="sign_question" translatable="false">\u0020?\u0020</string>
+    <string name="bracket_start" translatable="false">(</string>
+    <string name="bracket_end" translatable="false">)</string>
+    <string name="sign_equal" translatable="false">\u0020=\u0020\u0020</string>
+    <string name="sign_multiplication" translatable="false">\u0020*\u0020</string>
+    <string name="sign_division" translatable="false">\u0020/\u0020</string>
+    <string name="sign_addition" translatable="false">\u0020+\u0020</string>
+    <string name="sign_subtraction" translatable="false">\u0020-\u0020</string>
+    <string name="space" translatable="false">\u0020</string>
+    <string name="easy" translatable="false">Easy</string>
+    <string name="hard" translatable="false">Hard</string>
+    <string name="medium" translatable="false">Medium</string>
+
+    <string name="SHARE_APP_LINK" translatable="false">"https://play.google.com/store/apps/details?id=&quot;</string>
+    <string name="feedback_mail" translatable="false">templatevilla007@gmail.com</string>
+
+    <string name="ADS_VISIBILITY" translatable="false">YES</string>
+    <string name="app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="bannerads" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="InterstitialAds" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+
+
+
+
+    <string name="english" translatable="false">English</string>
+    <string name="english_code" translatable="false">en</string>
+</resources>

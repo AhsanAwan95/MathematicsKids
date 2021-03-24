@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/dialogue_background"
+        android:id="@+id/ll_eu_consent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!--Title / Header-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="#AA000000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="@string/app_name" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtConsentDescription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/colorText3"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtConsentDescription2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:textColor="@color/colorText3"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtConsentDescription3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/colorText3"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtConsentMoreLearnMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
+            android:textColor="#0000EE"
+            android:textColorLink="#0000EE"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnConsentYes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_rounded"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnConsentNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_rounded"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</ScrollView>
