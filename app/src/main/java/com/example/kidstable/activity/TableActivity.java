@@ -54,7 +54,7 @@ public class TableActivity extends AppCompatActivity implements NumberAdapter.se
         super.onCreate(savedInstanceState);
         setDefaultLanguage(this);
 
-
+//
         learnTableBinding = DataBindingUtil.setContentView(this,R.layout.learn_table);
         init();
         showbanner();
