@@ -23,9 +23,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.example.kidstable.R;
-import com.example.kidstable.data.RandomData;
-import com.example.kidstable.model.DualModel;
-import com.example.kidstable.model.Model;
+import com.example.kidstable.dataclasses.RandomData;
+import com.example.kidstable.modelclasses.DualModel;
+import com.example.kidstable.modelclasses.Model;
 import com.example.kidstable.utils.Constants;
 import com.example.kidstable.utils.RoundedBackgroundSpan;
 import com.google.gson.Gson;
@@ -75,7 +75,7 @@ public class SingleLearnActivity extends AppCompatActivity implements View.OnCli
         }
 
         setTime(getApplicationContext(), (countTime + Constants.getTime(getApplicationContext(), level_type)), level_type);
-        Intent intent = new Intent(this, SingleLearnType.class);
+        Intent intent = new Intent(this, SingleQuizTypeActivity.class);
         intent.putExtra(Constants.LEVEL_TYPE, level_type);
         startActivity(intent);
         overridePendingTransition(0, 0);

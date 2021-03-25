@@ -8,18 +8,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kidstable.R;
-import com.example.kidstable.adapter.NumberAdapter;
-import com.example.kidstable.adapter.TableAdapter;
+import com.example.kidstable.adapters.NumberAdapter;
+import com.example.kidstable.adapters.TableAdapter;
+import com.example.kidstable.databinding.LearnTableBinding;
 import com.example.kidstable.utils.ConnectionDetector;
 import com.example.kidstable.utils.Constants;
 import com.google.ads.consent.ConsentInformation;
@@ -34,12 +35,10 @@ import static com.example.kidstable.activity.SettingActivity.sendFeedback;
 import static com.example.kidstable.utils.Constants.setDefaultLanguage;
 
 
-public class LearnTableActivity extends AppCompatActivity implements NumberAdapter.setClick {
+public class TableActivity extends AppCompatActivity implements NumberAdapter.setClick {
 
-    RecyclerView table_recycler, number_recycler;
     NumberAdapter numberAdapter;
     TableAdapter tableAdapter;
-    Button btn_play;
     MediaPlayer mp;
     AdView mAdView;
     boolean interstitialCanceled;
@@ -48,11 +47,15 @@ public class LearnTableActivity extends AppCompatActivity implements NumberAdapt
     private int table_no = 1;
     Activity activity;
 
+    LearnTableBinding learnTableBinding;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setDefaultLanguage(this);
-        setContentView(R.layout.learn_table);
+
+
+        learnTableBinding = DataBindingUtil.setContentView(this,R.layout.learn_table);
         init();
         showbanner();
     }
@@ -61,7 +64,7 @@ public class LearnTableActivity extends AppCompatActivity implements NumberAdapt
         mAdView = findViewById(R.id.mAdView);
         // Forward Consent To AdMob
         Bundle extras = new Bundle();
-        ConsentInformation consentInformation = ConsentInformation.getInstance(LearnTableActivity.this);
+        ConsentInformation consentInformation = ConsentInformation.getInstance(TableActivity.this);
         if (consentInformation.getConsentStatus().equals(ConsentStatus.NON_PERSONALIZED)) {
             extras.putString("npa", "1");
         }
@@ -78,7 +81,7 @@ public class LearnTableActivity extends AppCompatActivity implements NumberAdapt
         if (mp != null) {
             mp.release();
         }
-        Intent intent = new Intent(LearnTableActivity.this, DashboardActivity.class);
+        Intent intent = new Intent(TableActivity.this, DashboardActivity.class);
         startActivity(intent);
     }
 
@@ -94,31 +97,29 @@ public class LearnTableActivity extends AppCompatActivity implements NumberAdapt
                 if (mp != null) {
                     mp.release();
                 }
-                Intent intent = new Intent(LearnTableActivity.this, DashboardActivity.class);
+                Intent intent = new Intent(TableActivity.this, DashboardActivity.class);
                 startActivity(intent);
             }
         });
         mp = MediaPlayer.create(this, R.raw.click);
-        btn_play = findViewById(R.id.btn_play);
-        table_recycler = findViewById(R.id.table_recycler);
-        number_recycler = findViewById(R.id.number_recycler);
+
         activity = this;
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 6);
-        number_recycler.setLayoutManager(layoutManager);
+        learnTableBinding.numberRecycler.setLayoutManager(layoutManager);
 
         numberAdapter = new NumberAdapter(getApplicationContext());
-        number_recycler.setAdapter(numberAdapter);
+        learnTableBinding.numberRecycler.setAdapter(numberAdapter);
         numberAdapter.setClickListener(this);
         numberAdapter.setSelectedPos(0);
 
         RecyclerView.LayoutManager layoutManager1 = new GridLayoutManager(getApplicationContext(), 2);
-        table_recycler.setLayoutManager(layoutManager1);
+        learnTableBinding.tableRecycler.setLayoutManager(layoutManager1);
 
         tableAdapter = new TableAdapter(getApplicationContext(), 1);
-        table_recycler.setAdapter(tableAdapter);
+        learnTableBinding.tableRecycler.setAdapter(tableAdapter);
 
-        btn_play.setOnClickListener(new View.OnClickListener() {
+        learnTableBinding.btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!interstitialCanceled) {
@@ -137,7 +138,7 @@ public class LearnTableActivity extends AppCompatActivity implements NumberAdapt
 
     private void ContinueIntent() {
         startSound();
-        Intent intent = new Intent(LearnTableActivity.this, QuizActivity.class);
+        Intent intent = new Intent(TableActivity.this, QuizActivity.class);
         intent.putExtra(Constants.TABLE_NO, table_no);
         startActivity(intent);
     }
@@ -224,7 +225,7 @@ public class LearnTableActivity extends AppCompatActivity implements NumberAdapt
         try {
             // Forward Consent To AdMob
             Bundle extras = new Bundle();
-            ConsentInformation consentInformation = ConsentInformation.getInstance(LearnTableActivity.this);
+            ConsentInformation consentInformation = ConsentInformation.getInstance(TableActivity.this);
             if (consentInformation.getConsentStatus().equals(ConsentStatus.NON_PERSONALIZED)) {
                 extras.putString("npa", "1");
             }
@@ -244,9 +245,9 @@ public class LearnTableActivity extends AppCompatActivity implements NumberAdapt
 //        if (consentInformation.getConsentStatus().equals(ConsentStatus.NON_PERSONALIZED)) {
 //            extras.putString("npa", "1");
 //        }
-        cd = new ConnectionDetector(LearnTableActivity.this);
+        cd = new ConnectionDetector(TableActivity.this);
         if (cd.isConnectingToInternet()) {
-            mInterstitialAd = new InterstitialAd(LearnTableActivity.this);
+            mInterstitialAd = new InterstitialAd(TableActivity.this);
             mInterstitialAd.setAdUnitId(getString(R.string.InterstitialAds));
             requestNewInterstitial();
             mInterstitialAd.setAdListener(new AdListener() {

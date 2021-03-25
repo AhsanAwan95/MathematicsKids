@@ -1,4 +1,4 @@
-package com.example.kidstable.fragment;
+package com.example.kidstable.fragments;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kidstable.R;
 import com.example.kidstable.activity.SingleLearnActivity;
-import com.example.kidstable.adapter.LevelAdapter;
+import com.example.kidstable.adapters.LevelAdapter;
 import com.example.kidstable.utils.ConnectionDetector;
 import com.example.kidstable.utils.Constants;
 import com.google.ads.consent.ConsentInformation;
@@ -31,7 +31,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import java.util.concurrent.TimeUnit;
 
 
-public class EasyFragment extends Fragment implements LevelAdapter.onClik {
+public class HardQuizFragment extends Fragment implements LevelAdapter.onClik {
 
     private View view;
     private MediaPlayer mp;
@@ -49,6 +49,7 @@ public class EasyFragment extends Fragment implements LevelAdapter.onClik {
         }
     }
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,7 +60,6 @@ public class EasyFragment extends Fragment implements LevelAdapter.onClik {
         return view;
     }
 
-
     private void init() {
         mp = MediaPlayer.create(getActivity(), R.raw.click);
         TextView txt_time = view.findViewById(R.id.txt_time);
@@ -67,14 +67,16 @@ public class EasyFragment extends Fragment implements LevelAdapter.onClik {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 4);
         recyclerView.setLayoutManager(layoutManager);
 
-        LevelAdapter levelAdapter = new LevelAdapter(getContext(), Constants.geLevelData(getContext(), getString(R.string.easy)));
+        LevelAdapter levelAdapter = new LevelAdapter(getContext(), Constants.geLevelData(getContext(), getString(R.string.hard)));
         recyclerView.setAdapter(levelAdapter);
         levelAdapter.setoperatoinListener(this);
 
 
-        long seconds = TimeUnit.MILLISECONDS.toSeconds(Constants.getTime(getActivity(), getString(R.string.easy)));
 
-        txt_time.append(" " + seconds + " " + getString(R.string.s));
+
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(Constants.getTime(getActivity(), getString(R.string.hard)));
+
+        txt_time.append(" "+seconds + " " + getString(R.string.s));
 
     }
 
@@ -89,19 +91,12 @@ public class EasyFragment extends Fragment implements LevelAdapter.onClik {
                 ContinueIntent(Mainposition);
             }
         }
-//        startSound();
-//        Intent intent = new Intent(getContext(), SingleLearnActivity.class);
-//        intent.putExtra(Constants.LEVEL_NO, id);
-//        intent.putExtra(Constants.LEVEL_TYPE, getString(R.string.easy));
-//        startActivity(intent);
     }
-
     @Override
     public void onToast() {
         startSound();
-        Toast.makeText(getContext(), "" + getString(R.string.clear_level), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), ""+getString(R.string.clear_level), Toast.LENGTH_SHORT).show();
     }
-
     private void CallNewInsertial() {
 //        // Forward Consent To AdMob
 //        Bundle extras = new Bundle();
@@ -125,8 +120,8 @@ public class EasyFragment extends Fragment implements LevelAdapter.onClik {
     private void ContinueIntent(int mainposition) {
         startSound();
         Intent intent = new Intent(getContext(), SingleLearnActivity.class);
-        intent.putExtra(Constants.LEVEL_NO, Mainposition);
-        intent.putExtra(Constants.LEVEL_TYPE, getString(R.string.easy));
+        intent.putExtra(Constants.LEVEL_NO, mainposition);
+        intent.putExtra(Constants.LEVEL_TYPE, getString(R.string.hard));
         startActivity(intent);
     }
 
@@ -175,12 +170,4 @@ public class EasyFragment extends Fragment implements LevelAdapter.onClik {
             CallNewInsertial();
         }
     }
-
-    //    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        interstitialCanceled = false;
-//        if (getResources().getString(R.string.ADS_VISIBILITY).equals("YES")) {
-//            CallNewInsertial();
-//        }
 }

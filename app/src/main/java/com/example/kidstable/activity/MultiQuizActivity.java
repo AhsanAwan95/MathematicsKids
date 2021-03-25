@@ -14,20 +14,21 @@ import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 
 
 import com.example.kidstable.R;
-import com.example.kidstable.data.RandomData;
+import com.example.kidstable.databinding.ActivityDualQuizBinding;
+import com.example.kidstable.dataclasses.RandomData;
 
-import com.example.kidstable.model.DualModel;
+
+import com.example.kidstable.modelclasses.DualModel;
 import com.example.kidstable.utils.Constants;
 import com.example.kidstable.utils.RoundedBackgroundSpan;
 import com.thekhaeng.pushdownanim.PushDownAnim;
@@ -41,7 +42,7 @@ import static com.example.kidstable.utils.Constants.setDefaultLanguage;
 import static com.thekhaeng.pushdownanim.PushDownAnim.DEFAULT_PUSH_DURATION;
 import static com.thekhaeng.pushdownanim.PushDownAnim.DEFAULT_RELEASE_DURATION;
 
-public class DualActivity extends AppCompatActivity implements View.OnClickListener {
+public class MultiQuizActivity extends AppCompatActivity implements View.OnClickListener {
 
     List<DualModel> tableModelListT1 = new ArrayList<>();
     List<DualModel> tableModelListT2 = new ArrayList<>();
@@ -57,18 +58,16 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
     SharedPreferences pref;
     MediaPlayer answerPlayerT1;
     MediaPlayer mp;
-    ImageView btn_play;
     CountDownTimer countDownTimerT1, countDownTimerT2;
     String level_type;
     MediaPlayer answerPlayerT2;
-    ProgressBar timer_progress_T1, timer_progress_T2;
+
     boolean isTimerT1, isTimerT2;
     boolean isPlay = true;
     int countT1 = 10, countT2 = 10, secT1, secT2;
     int quiz_t1_no = 0, quiz_t2_no = 0, wrong_t1_count = 0, right_t1_count = 0, right_t2_count = 0, wrong_t2_count = 0;
-    TextView text_t1_timer, text_t2_timer, txt_header, text_t1_total_question, text_t1_wrong_question, text_t1_true_question, text_t1_op_1, text_t1_op_2, text_t1_op_3, text_t1_op_4, text_t1_1;
-    TextView text_t2_total_question, text_t2_wrong_question, text_t2_true_question, text_t2_op_1, text_t2_op_2, text_t2_op_3, text_t2_op_4, text_t2_1;
 
+    ActivityDualQuizBinding activityDualBinding;
 
     public void startSound() {
         if (Constants.getSound(getApplicationContext())) {
@@ -87,7 +86,9 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setDefaultLanguage(this);
-        setContentView(R.layout.activity_dual);
+
+
+        activityDualBinding = DataBindingUtil.setContentView(this,R.layout.activity_dual_quiz);
         init();
     }
 
@@ -106,12 +107,12 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onTick(long millisUntilFinished) {
                 isPlay = true;
-                btn_play.setImageResource(R.drawable.ic_pause);
+                activityDualBinding.btnPlay.setImageResource(R.drawable.ic_pause);
                 isTimerT1 = true;
-                text_t1_timer.setText(millisUntilFinished / 1000 + getString(R.string.space) + getString(R.string.s));
+                activityDualBinding.textT1Timer.setText(millisUntilFinished / 1000 + getString(R.string.space) + getString(R.string.s));
                 countT1 = (int) (millisUntilFinished / 1000);
                 secT1 = secT1 + 1;
-                timer_progress_T1.setProgress(countT1);
+                activityDualBinding.timerProgressT1.setProgress(countT1);
             }
 
             @Override
@@ -119,7 +120,7 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
                 isTimerT1 = false;
                 if (quiz_t1_no < tableModelListT1.size() - 1) {
                     wrong_t1_count = wrong_t1_count + 1;
-                    text_t1_wrong_question.setText(String.valueOf(wrong_t1_count));
+                    activityDualBinding.textT1WrongQuestion.setText(String.valueOf(wrong_t1_count));
                 }
                 setNextQuizT1();
             }
@@ -134,7 +135,7 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
             setQuizT1(quiz_t1_no);
             countDownTimerT1.cancel();
             countT1 = 10;
-            timer_progress_T1.setMax(countT1);
+            activityDualBinding.timerProgressT1.setMax(countT1);
 
             setTimerT1();
 
@@ -158,12 +159,12 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
                 isTimerT2 = true;
 
                 isPlay = true;
-                btn_play.setImageResource(R.drawable.ic_pause);
+                activityDualBinding.btnPlay.setImageResource(R.drawable.ic_pause);
 
-                text_t2_timer.setText(millisUntilFinished / 1000 + getString(R.string.space) + getString(R.string.s));
+                activityDualBinding.textT2Timer.setText(millisUntilFinished / 1000 + getString(R.string.space) + getString(R.string.s));
                 countT2 = (int) (millisUntilFinished / 1000);
                 secT2 = secT2 + 1;
-                timer_progress_T2.setProgress(countT2);
+                activityDualBinding.timerProgressT2.setProgress(countT2);
             }
 
             @Override
@@ -171,7 +172,7 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
                 isTimerT2 = false;
                 if (quiz_t2_no < tableModelListT2.size() - 1) {
                     wrong_t2_count = wrong_t2_count + 1;
-                    text_t2_wrong_question.setText(String.valueOf(wrong_t2_count));
+                    activityDualBinding.textT2WrongQuestion.setText(String.valueOf(wrong_t2_count));
                 }
 
                 setNextQuizT2();
@@ -190,7 +191,7 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
 
             countDownTimerT2.cancel();
             countT2 = 10;
-            timer_progress_T2.setMax(countT2);
+            activityDualBinding.timerProgressT2.setMax(countT2);
             setTimerT2();
         } else {
             if (!isDialogOpen) {
@@ -243,57 +244,31 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-        txt_header = findViewById(R.id.txt_header);
+        activityDualBinding.textT1TrueQuestion.setText(String.valueOf(right_t1_count));
+        activityDualBinding.textT1WrongQuestion.setText(String.valueOf(wrong_t1_count));
 
-        btn_play = findViewById(R.id.btn_play);
-        text_t1_op_1 = findViewById(R.id.text_t1_op_1);
-        text_t1_op_2 = findViewById(R.id.text_t1_op_2);
-        text_t1_op_3 = findViewById(R.id.text_t1_op_3);
-        text_t1_op_4 = findViewById(R.id.text_t1_op_4);
-        text_t1_1 = findViewById(R.id.text_t1_1);
-        text_t1_total_question = findViewById(R.id.text_t1_total_question);
-        text_t1_true_question = findViewById(R.id.text_t1_true_question);
-        text_t1_wrong_question = findViewById(R.id.text_t1_wrong_question);
+        activityDualBinding.textT2TrueQuestion.setText(String.valueOf(right_t2_count));
+        activityDualBinding.textT2WrongQuestion.setText(String.valueOf(wrong_t2_count));
 
-        text_t1_true_question.setText(String.valueOf(right_t1_count));
-        text_t1_wrong_question.setText(String.valueOf(wrong_t1_count));
-
-
-        text_t2_op_1 = findViewById(R.id.text_t2_op_1);
-        timer_progress_T1 = findViewById(R.id.timer_progress_T1);
-        timer_progress_T2 = findViewById(R.id.timer_progress_T2);
-        text_t2_op_2 = findViewById(R.id.text_t2_op_2);
-        text_t2_op_3 = findViewById(R.id.text_t2_op_3);
-        text_t2_op_4 = findViewById(R.id.text_t2_op_4);
-        text_t2_1 = findViewById(R.id.text_t2_1);
-        text_t1_timer = findViewById(R.id.text_t1_timer);
-        text_t2_timer = findViewById(R.id.text_t2_timer);
-        text_t2_total_question = findViewById(R.id.text_t2_total_question);
-        text_t2_true_question = findViewById(R.id.text_t2_true_question);
-        text_t2_wrong_question = findViewById(R.id.text_t2_wrong_question);
-
-        text_t2_true_question.setText(String.valueOf(right_t2_count));
-        text_t2_wrong_question.setText(String.valueOf(wrong_t2_count));
+        activityDualBinding.textT1Op1.setOnClickListener(this);
+        activityDualBinding.textT1Op2.setOnClickListener(this);
+        activityDualBinding. textT1Op3.setOnClickListener(this);
+        activityDualBinding.textT1Op4.setOnClickListener(this);
+        activityDualBinding.textT2Op1.setOnClickListener(this);
+        activityDualBinding.textT2Op2.setOnClickListener(this);
+        activityDualBinding.textT2Op3.setOnClickListener(this);
+        activityDualBinding.textT2Op4.setOnClickListener(this);
+        activityDualBinding.btnPlay.setOnClickListener(this);
 
 
-        text_t1_op_1.setOnClickListener(this);
-        text_t1_op_2.setOnClickListener(this);
-        text_t1_op_3.setOnClickListener(this);
-        text_t1_op_4.setOnClickListener(this);
-        text_t2_op_1.setOnClickListener(this);
-        text_t2_op_2.setOnClickListener(this);
-        text_t2_op_3.setOnClickListener(this);
-        text_t2_op_4.setOnClickListener(this);
-        btn_play.setOnClickListener(this);
-
-
-        PushDownAnim.setPushDownAnimTo(text_t1_op_1, text_t1_op_2, text_t1_op_3, text_t1_op_4, text_t2_op_1, text_t2_op_2, text_t2_op_3, text_t2_op_4).
+        PushDownAnim.setPushDownAnimTo(activityDualBinding.textT1Op1, activityDualBinding.textT1Op2, activityDualBinding.textT1Op3, activityDualBinding.textT1Op4,
+                activityDualBinding.textT2Op1, activityDualBinding.textT2Op2, activityDualBinding.textT2Op3, activityDualBinding.textT2Op4).
                 setScale(PushDownAnim.MODE_STATIC_DP, 10).setDurationPush(DEFAULT_PUSH_DURATION)
                 .setDurationRelease(DEFAULT_RELEASE_DURATION)
                 .setInterpolatorPush(PushDownAnim.DEFAULT_INTERPOLATOR)
                 .setInterpolatorRelease(PushDownAnim.DEFAULT_INTERPOLATOR);
-        timer_progress_T1.setMax(countT1);
-        timer_progress_T2.setMax(countT2);
+        activityDualBinding.timerProgressT1.setMax(countT1);
+        activityDualBinding.timerProgressT2.setMax(countT2);
 
         getData();
         if (tableModelListT1.size() > 0) {
@@ -323,10 +298,10 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void addTextViewT1() {
-        textViewListT1.add(text_t1_op_1);
-        textViewListT1.add(text_t1_op_2);
-        textViewListT1.add(text_t1_op_3);
-        textViewListT1.add(text_t1_op_4);
+        textViewListT1.add(activityDualBinding.textT1Op1);
+        textViewListT1.add(activityDualBinding.textT1Op2);
+        textViewListT1.add(activityDualBinding.textT1Op3);
+        textViewListT1.add(activityDualBinding.textT1Op4);
 
         for (int i = 0; i < textViewListT1.size(); i++) {
             textViewListT1.get(i).setTextColor(getResources().getColorStateList(R.color.selector_text_color));
@@ -337,10 +312,10 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void addTextViewT2() {
-        textViewListT2.add(text_t2_op_1);
-        textViewListT2.add(text_t2_op_2);
-        textViewListT2.add(text_t2_op_3);
-        textViewListT2.add(text_t2_op_4);
+        textViewListT2.add(activityDualBinding.textT2Op1);
+        textViewListT2.add(activityDualBinding.textT2Op2);
+        textViewListT2.add(activityDualBinding.textT2Op3);
+        textViewListT2.add(activityDualBinding.textT2Op4);
 
         for (int i = 0; i < textViewListT2.size(); i++) {
             textViewListT2.get(i).setTextColor(getResources().getColorStateList(R.color.selector_text_color));
@@ -351,7 +326,7 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
 
     public void setQuizT2(int quiz_t1_no) {
         addTextViewT2();
-        text_t2_total_question.setText((quiz_t1_no + 1) + " " + getString(R.string.str_sign) + " " + tableModelListT2.size());
+        activityDualBinding.textT2TotalQuestion.setText((quiz_t1_no + 1) + " " + getString(R.string.str_sign) + " " + tableModelListT2.size());
         tableModelT2 = tableModelListT2.get(quiz_t1_no);
 
         List<String> answerList = new ArrayList<>();
@@ -363,13 +338,13 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
 
         Collections.shuffle(answerList);
 
-        text_t2_op_1.setText(String.valueOf(answerList.get(0)));
-        text_t2_op_2.setText(String.valueOf(answerList.get(1)));
-        text_t2_op_3.setText(String.valueOf(answerList.get(2)));
-        text_t2_op_4.setText(String.valueOf(answerList.get(3)));
+        activityDualBinding.textT2Op1.setText(String.valueOf(answerList.get(0)));
+        activityDualBinding.textT2Op2.setText(String.valueOf(answerList.get(1)));
+        activityDualBinding.textT2Op3.setText(String.valueOf(answerList.get(2)));
+        activityDualBinding.textT2Op4.setText(String.valueOf(answerList.get(3)));
 
 
-        text_t2_1.setText(getSpanQuestion(tableModelT2), TextView.BufferType.SPANNABLE);
+        activityDualBinding.textT21.setText(getSpanQuestion(tableModelT2), TextView.BufferType.SPANNABLE);
 
 
     }
@@ -377,7 +352,7 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
 
     public void setQuizT1(int quiz_t1_no) {
         addTextViewT1();
-        text_t1_total_question.setText((quiz_t1_no + 1) + " " + getString(R.string.str_sign) + " " + tableModelListT1.size());
+        activityDualBinding.textT1TotalQuestion.setText((quiz_t1_no + 1) + " " + getString(R.string.str_sign) + " " + tableModelListT1.size());
         tableModelT1 = tableModelListT1.get(quiz_t1_no);
 
         List<String> answerList = new ArrayList<>();
@@ -389,12 +364,12 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
 
         Collections.shuffle(answerList);
 
-        text_t1_op_1.setText(String.valueOf(answerList.get(0)));
-        text_t1_op_2.setText(String.valueOf(answerList.get(1)));
-        text_t1_op_3.setText(String.valueOf(answerList.get(2)));
-        text_t1_op_4.setText(String.valueOf(answerList.get(3)));
+        activityDualBinding.textT1Op1.setText(String.valueOf(answerList.get(0)));
+        activityDualBinding.textT1Op2.setText(String.valueOf(answerList.get(1)));
+        activityDualBinding.textT1Op3.setText(String.valueOf(answerList.get(2)));
+        activityDualBinding.textT1Op4.setText(String.valueOf(answerList.get(3)));
 
-        text_t1_1.setText(getSpanQuestion(tableModelT1), TextView.BufferType.SPANNABLE);
+        activityDualBinding.textT11.setText(getSpanQuestion(tableModelT1), TextView.BufferType.SPANNABLE);
     }
 
 
@@ -459,15 +434,15 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             if (level_type.equalsIgnoreCase(getString(R.string.easy))) {
-                setEasyQuestion(tableModelT1, text_t1_1, textView, color);
+                setEasyQuestion(tableModelT1, activityDualBinding.textT11, textView, color);
             } else if (level_type.equalsIgnoreCase(getString(R.string.medium))) {
-                setMediumQuestion(tableModelT1, text_t1_1, textView, color);
+                setMediumQuestion(tableModelT1, activityDualBinding.textT11, textView, color);
             } else {
-                setHardQuestion(tableModelT1, text_t1_1, textView, color);
+                setHardQuestion(tableModelT1, activityDualBinding.textT11, textView, color);
             }
 
-            text_t1_true_question.setText(String.valueOf(right_t1_count));
-            text_t1_wrong_question.setText(String.valueOf(wrong_t1_count));
+            activityDualBinding.textT1TrueQuestion.setText(String.valueOf(right_t1_count));
+            activityDualBinding.textT1WrongQuestion.setText(String.valueOf(wrong_t1_count));
 
             if (!isRunnableT1) {
                 isRunnableT1 = true;
@@ -633,16 +608,16 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
 
 
             if (level_type.equalsIgnoreCase(getString(R.string.easy))) {
-                setEasyQuestion(tableModelT2, text_t2_1, textView, color);
+                setEasyQuestion(tableModelT2, activityDualBinding.textT21, textView, color);
             } else if (level_type.equalsIgnoreCase(getString(R.string.medium))) {
-                setMediumQuestion(tableModelT2, text_t2_1, textView, color);
+                setMediumQuestion(tableModelT2, activityDualBinding.textT21, textView, color);
             } else {
-                setHardQuestion(tableModelT2, text_t2_1, textView, color);
+                setHardQuestion(tableModelT2, activityDualBinding.textT21, textView, color);
             }
 
 
-            text_t2_true_question.setText(String.valueOf(right_t2_count));
-            text_t2_wrong_question.setText(String.valueOf(wrong_t2_count));
+            activityDualBinding.textT2TrueQuestion.setText(String.valueOf(right_t2_count));
+            activityDualBinding.textT2WrongQuestion.setText(String.valueOf(wrong_t2_count));
             if (!isRunnableT2) {
                 isRunnableT2 = true;
                 handlerT2.postDelayed(runnableT2, 500);
@@ -691,7 +666,7 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         isPlay = false;
-        btn_play.setImageResource(R.drawable.ic_play);
+        activityDualBinding.btnPlay.setImageResource(R.drawable.ic_play);
 
 
         if (isTimerT1) {
@@ -754,33 +729,33 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.text_t1_op_1:
-                checkT1Answer(text_t1_op_1);
+                checkT1Answer(activityDualBinding.textT1Op1);
                 break;
             case R.id.text_t1_op_2:
-                checkT1Answer(text_t1_op_2);
+                checkT1Answer(activityDualBinding.textT1Op2);
                 break;
             case R.id.text_t1_op_3:
-                checkT1Answer(text_t1_op_3);
+                checkT1Answer(activityDualBinding.textT1Op3);
                 break;
             case R.id.text_t1_op_4:
-                checkT1Answer(text_t1_op_4);
+                checkT1Answer(activityDualBinding.textT1Op4);
                 break;
             case R.id.text_t2_op_1:
-                checkT2Answer(text_t2_op_1);
+                checkT2Answer(activityDualBinding.textT2Op1);
                 break;
             case R.id.text_t2_op_2:
-                checkT2Answer(text_t2_op_2);
+                checkT2Answer(activityDualBinding.textT2Op2);
                 break;
             case R.id.text_t2_op_3:
-                checkT2Answer(text_t2_op_3);
+                checkT2Answer(activityDualBinding.textT2Op3);
                 break;
             case R.id.text_t2_op_4:
-                checkT2Answer(text_t2_op_4);
+                checkT2Answer(activityDualBinding.textT2Op4);
                 break;
             case R.id.btn_play:
                 if (isPlay) {
                     isPlay = false;
-                    btn_play.setImageResource(R.drawable.ic_play);
+                    activityDualBinding.btnPlay.setImageResource(R.drawable.ic_play);
                     if (isTimerT2 && isTimerT1) {
                         isTimerT2 = false;
                         isTimerT1 = false;
@@ -789,7 +764,7 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 } else {
                     isPlay = true;
-                    btn_play.setImageResource(R.drawable.ic_pause);
+                    activityDualBinding.btnPlay.setImageResource(R.drawable.ic_pause);
                     isTimerT1 = true;
                     isTimerT2 = true;
                     setTimerT2();
@@ -865,7 +840,7 @@ public class DualActivity extends AppCompatActivity implements View.OnClickListe
                 startSound();
                 isDialogOpen = false;
                 clearRunnable();
-                Intent intent = new Intent(DualActivity.this, DashboardActivity.class);
+                Intent intent = new Intent(MultiQuizActivity.this, DashboardActivity.class);
                 startActivity(intent);
                 alertDialogAndroid.dismiss();
             }

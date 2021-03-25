@@ -1,4 +1,4 @@
-package com.example.kidstable.adapter;
+package com.example.kidstable.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.kidstable.R;
-import com.example.kidstable.model.Model;
+import com.example.kidstable.modelclasses.Model;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import java.util.List;

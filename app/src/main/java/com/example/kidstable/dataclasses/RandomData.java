@@ -1,11 +1,11 @@
-package com.example.kidstable.data;
+package com.example.kidstable.dataclasses;
 
 import android.content.Context;
 import android.util.Log;
 
 
 import com.example.kidstable.R;
-import com.example.kidstable.model.DualModel;
+import com.example.kidstable.modelclasses.DualModel;
 
 import java.util.ArrayList;
 import java.util.Collections;

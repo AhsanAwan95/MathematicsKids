@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -79,16 +77,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         Intent intent;
         if (view.getId() == R.id.btn_table_quiz) {
-            intent = new Intent(DashboardActivity.this, LearnTableActivity.class);
+            intent = new Intent(DashboardActivity.this, TableActivity.class);
             startActivity(intent);
         } else if (view.getId() == R.id.btn_dual_quiz) {
-            intent = new Intent(DashboardActivity.this, DualType.class);
+            intent = new Intent(DashboardActivity.this, DualTypeQuiz.class);
             startActivity(intent);
         } else if (view.getId() == R.id.btn_pythagoran) {
             intent = new Intent(DashboardActivity.this, PythagoranActivity.class);
             startActivity(intent);
         } else if (view.getId() == R.id.btn_learn_quiz) {
-            intent = new Intent(DashboardActivity.this, SingleLearnType.class);
+            intent = new Intent(DashboardActivity.this, SingleQuizTypeActivity.class);
             startActivity(intent);
         } else if (view.getId() == R.id.btn_setting) {
             intent = new Intent(DashboardActivity.this, SettingActivity.class);

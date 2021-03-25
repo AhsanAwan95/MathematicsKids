@@ -1,4 +1,4 @@
-package com.example.kidstable.fragment;
+package com.example.kidstable.fragments;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kidstable.R;
 import com.example.kidstable.activity.SingleLearnActivity;
-import com.example.kidstable.adapter.LevelAdapter;
+import com.example.kidstable.adapters.LevelAdapter;
 import com.example.kidstable.utils.ConnectionDetector;
 import com.example.kidstable.utils.Constants;
 import com.google.ads.consent.ConsentInformation;
@@ -31,7 +31,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import java.util.concurrent.TimeUnit;
 
 
-public class MediumFragment extends Fragment implements LevelAdapter.onClik {
+public class MediumQuizFragment extends Fragment implements LevelAdapter.onClik {
 
     private View view;
     private MediaPlayer mp;

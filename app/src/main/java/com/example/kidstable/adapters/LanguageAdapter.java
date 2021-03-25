@@ -1,4 +1,4 @@
-package com.example.kidstable.adapter;
+package com.example.kidstable.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.kidstable.model;
+package com.example.kidstable.modelclasses;
 
 public class DualModel {
 

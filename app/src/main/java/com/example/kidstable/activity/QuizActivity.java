@@ -23,7 +23,7 @@ import androidx.core.content.ContextCompat;
 
 
 import com.example.kidstable.R;
-import com.example.kidstable.model.TableModel;
+import com.example.kidstable.modelclasses.TableModel;
 import com.example.kidstable.utils.Constants;
 import com.example.kidstable.utils.RoundedBackgroundSpan;
 import com.thekhaeng.pushdownanim.PushDownAnim;
@@ -408,7 +408,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                 startSound();
                 clearRunnable();
-                Intent intent = new Intent(QuizActivity.this, LearnTableActivity.class);
+                Intent intent = new Intent(QuizActivity.this, TableActivity.class);
                 startActivity(intent);
                 alertDialogAndroid.dismiss();
             }

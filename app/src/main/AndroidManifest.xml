@@ -23,7 +23,7 @@
         </activity>
 
         <activity
-            android:name=".activity.LearnTableActivity"
+            android:name=".activity.TableActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -33,12 +33,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.DualType"
+            android:name=".activity.DualTypeQuiz"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.DualActivity"
+            android:name=".activity.MultiQuizActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -54,7 +54,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.SingleLearnType"
+            android:name=".activity.SingleQuizTypeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 

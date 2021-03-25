@@ -9,7 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.example.kidstable.R;
-import com.example.kidstable.model.Model;
+import com.example.kidstable.modelclasses.Model;
 import com.google.gson.Gson;
 
 

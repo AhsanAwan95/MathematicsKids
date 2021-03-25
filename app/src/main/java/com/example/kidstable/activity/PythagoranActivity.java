@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kidstable.R;
-import com.example.kidstable.adapter.MainAdapter;
+import com.example.kidstable.adapters.MainAdapter;
 import com.example.kidstable.utils.Constants;
 import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;

@@ -1,4 +1,4 @@
-package com.example.kidstable.fragment;
+package com.example.kidstable.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,7 +19,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.kidstable.R;
-import com.example.kidstable.activity.SingleLearnType;
+import com.example.kidstable.activity.SingleQuizTypeActivity;
 import com.example.kidstable.indicator.DachshundTabLayout;
 import com.example.kidstable.utils.Constants;
 import com.google.android.material.tabs.TabLayout;
@@ -28,7 +28,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.Objects;
 
 
-public class MainFragment extends Fragment {
+public class MainQuizFragment extends Fragment {
 
     private ViewPager viewPager;
 
@@ -60,13 +60,13 @@ public class MainFragment extends Fragment {
         if (!TextUtils.isEmpty(level_type)) {
             if (level_type.equalsIgnoreCase(getString(R.string.easy))) {
                 viewPager.setCurrentItem(0);
-                SingleLearnType.txt_header.setText(getString(R.string.easy));
+                SingleQuizTypeActivity.txt_header.setText(getString(R.string.easy));
             } else if (level_type.equalsIgnoreCase(getString(R.string.medium))) {
                 viewPager.setCurrentItem(1);
-                SingleLearnType.txt_header.setText(getString(R.string.medium));
+                SingleQuizTypeActivity.txt_header.setText(getString(R.string.medium));
             } else {
                 viewPager.setCurrentItem(2);
-                SingleLearnType.txt_header.setText(getString(R.string.hard));
+                SingleQuizTypeActivity.txt_header.setText(getString(R.string.hard));
             }
         }
 
@@ -90,11 +90,11 @@ public class MainFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 if (position == 0) {
-                    SingleLearnType.txt_header.setText(getString(R.string.easy));
+                    SingleQuizTypeActivity.txt_header.setText(getString(R.string.easy));
                 } else if (position == 1) {
-                    SingleLearnType.txt_header.setText(getString(R.string.medium));
+                    SingleQuizTypeActivity.txt_header.setText(getString(R.string.medium));
                 } else {
-                    SingleLearnType.txt_header.setText(getString(R.string.hard));
+                    SingleQuizTypeActivity.txt_header.setText(getString(R.string.hard));
                 }
             }
 
@@ -128,11 +128,11 @@ public class MainFragment extends Fragment {
 
             switch (position) {
                 case 0:
-                    return new EasyFragment();
+                    return new EasyQuizFragment();
                 case 1:
-                    return new MediumFragment();
+                    return new MediumQuizFragment();
                 case 2:
-                    return new HardFragment();
+                    return new HardQuizFragment();
                 default:
                     return null;
             }

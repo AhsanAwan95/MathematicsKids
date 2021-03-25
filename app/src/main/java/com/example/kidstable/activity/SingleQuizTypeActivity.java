@@ -23,8 +23,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 import com.example.kidstable.R;
-import com.example.kidstable.fragment.MainFragment;
-import com.example.kidstable.model.Model;
+import com.example.kidstable.fragments.MainQuizFragment;
+import com.example.kidstable.modelclasses.Model;
 import com.example.kidstable.utils.Constants;
 import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;
@@ -38,7 +38,7 @@ import static com.example.kidstable.utils.Constants.setDefaultLanguage;
 import static com.example.kidstable.utils.Constants.setTime;
 
 
-public class SingleLearnType extends AppCompatActivity {
+public class SingleQuizTypeActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -64,7 +64,7 @@ public class SingleLearnType extends AppCompatActivity {
         mAdView = findViewById(R.id.mAdView);
         // Forward Consent To AdMob
         Bundle extras = new Bundle();
-        ConsentInformation consentInformation = ConsentInformation.getInstance(SingleLearnType.this);
+        ConsentInformation consentInformation = ConsentInformation.getInstance(SingleQuizTypeActivity.this);
         if (consentInformation.getConsentStatus().equals(ConsentStatus.NON_PERSONALIZED)) {
             extras.putString("npa", "1");
         }
@@ -218,7 +218,7 @@ public class SingleLearnType extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         bundle.putString(Constants.LEVEL_TYPE, level_type);
-        MainFragment mainFragment = new MainFragment();
+        MainQuizFragment mainFragment = new MainQuizFragment();
         mainFragment.setArguments(bundle);
 
 

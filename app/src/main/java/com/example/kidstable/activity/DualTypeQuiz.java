@@ -27,7 +27,7 @@ import static com.example.kidstable.activity.SettingActivity.sendFeedback;
 import static com.example.kidstable.utils.Constants.setDefaultLanguage;
 
 
-public class DualType extends AppCompatActivity {
+public class DualTypeQuiz extends AppCompatActivity {
 
     LinearLayout btn_easy, btn_medium, btn_hard;
     int view_width, view_height;
@@ -173,7 +173,7 @@ public class DualType extends AppCompatActivity {
     public void passIntent(int string) {
         startSound();
         Constants.setLevelType(getApplicationContext(), getString(string));
-        Intent intent = new Intent(DualType.this, DualActivity.class);
+        Intent intent = new Intent(DualTypeQuiz.this, MultiQuizActivity.class);
         startActivity(intent);
     }
 
