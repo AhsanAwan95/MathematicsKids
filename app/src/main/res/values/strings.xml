@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">kidstable</string>
+    <string name="app_name">kidsTable</string>
 
     <string name="table_quiz">Table Quiz</string>
     <string name="learn">Learn</string>

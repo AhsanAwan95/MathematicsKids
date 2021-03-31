@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.kidstable.R;
 import com.example.kidstable.databinding.ActivityDashboardBinding;
+import com.example.kidstable.databinding.NewDashboardBinding;
 import com.example.kidstable.gdpr.CustomGdprHelper;
 import com.example.kidstable.utils.Constants;
 import com.thekhaeng.pushdownanim.PushDownAnim;
@@ -28,7 +29,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     boolean isSound;
     CustomGdprHelper customGdprHelper;
 
-    ActivityDashboardBinding activityDashboardBinding;
+    NewDashboardBinding activityDashboardBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         setDefaultLanguage(this);
 
 
-        activityDashboardBinding =  DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
+        activityDashboardBinding =  DataBindingUtil.setContentView(this, R.layout.new_dashboard);
 
         init();
         // Setup Custom Consent
