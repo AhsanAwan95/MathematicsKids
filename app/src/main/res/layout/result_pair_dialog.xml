@@ -121,7 +121,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/btn_bg"
             android:padding="5dp"
-            android:src="@drawable/ic_refresh_black_24dp" />
+            android:src="@drawable/ic_refresh_black" />
 
 
         <ImageButton
@@ -131,7 +131,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/btn_bg"
             android:padding="5dp"
-            android:src="@drawable/ic_navigate_next_black_24dp" />
+            android:src="@drawable/ic_navigate_next" />
 
 
     </LinearLayout>

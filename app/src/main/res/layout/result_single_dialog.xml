@@ -133,7 +133,7 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/btn_bg"
                 android:padding="5dp"
-                android:src="@drawable/ic_refresh_black_24dp" />
+                android:src="@drawable/ic_refresh_black" />
 
 
             <ImageButton
@@ -143,7 +143,7 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/btn_bg"
                 android:padding="5dp"
-                android:src="@drawable/ic_navigate_next_black_24dp" />
+                android:src="@drawable/ic_navigate_next" />
 
             <ImageButton
                 android:id="@+id/btn_share"
@@ -152,7 +152,7 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/btn_bg"
                 android:padding="5dp"
-                android:src="@drawable/ic_share_black_24dp"
+                android:src="@drawable/ic_share_black"
                 android:visibility="gone" />
 
 

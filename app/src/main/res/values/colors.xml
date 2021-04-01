@@ -4,11 +4,11 @@
 
 
     <color name="table_text_color">#03A094</color>
-    <color name="colorPrimary">#DB4CB8</color>
-    <color name="colorPrimaryDark">#EF4B76</color>
+    <color name="colorPrimary">#780000</color>
+    <color name="colorPrimaryDark">#580000</color>
     <color name="colorAccent">#FF9800</color>
     <color name="header_txt_color">#0085B6</color>
-    <color name="center_color">#EF4B76</color>
+    <color name="center_color">#800000</color>
 
 
     <color name="background_color">#C8C8C8</color>

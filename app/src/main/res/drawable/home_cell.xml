@@ -4,13 +4,14 @@
 
     <solid android:color="@color/hint_color" />
 
-    <corners android:radius="15dp" />
+    <corners android:radius="10dp" />
 
 
     <gradient
+        android:angle="90"
         android:endColor="@color/colorPrimary"
-        android:centerColor="@color/center_color"
-        android:startColor="@color/colorPrimaryDark" />
+        android:centerColor="@color/colorPrimaryDark"
+        android:startColor="@color/center_color" />
 
 
 

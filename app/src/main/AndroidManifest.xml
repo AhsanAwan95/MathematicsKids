@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kidstable">
+    package="com.proceeddinc.kidstable">
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,7 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/app_id" />
         <activity
-            android:name=".activity.DashboardActivity"
+            android:name="com.proceeddinc.kidstable.activity.DashboardActivity"
             android:theme="@style/FullScreenWindow"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -23,43 +23,43 @@
         </activity>
 
         <activity
-            android:name=".activity.TableActivity"
+            android:name="com.proceeddinc.kidstable.activity.TableActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.QuizActivity"
+            android:name="com.proceeddinc.kidstable.activity.QuizActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.DualTypeQuiz"
+            android:name="com.proceeddinc.kidstable.activity.DualTypeQuiz"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.MultiQuizActivity"
+            android:name="com.proceeddinc.kidstable.activity.MultiQuizActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.PythagoranActivity"
+            android:name="com.proceeddinc.kidstable.activity.PythagoranActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
 
         <activity
-            android:name=".activity.SingleLearnActivity"
+            android:name="com.proceeddinc.kidstable.activity.SingleLearnActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.SingleQuizTypeActivity"
+            android:name="com.proceeddinc.kidstable.activity.SingleQuizTypeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.SettingActivity"
+            android:name="com.proceeddinc.kidstable.activity.SettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
